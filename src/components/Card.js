@@ -1,4 +1,4 @@
-import { Box, Link } from '@chakra-ui/react';
+import { Box, Link } from '@chakra-ui/react'
 
 export default function Card({ children, ...rest }) {
   return (
@@ -17,5 +17,5 @@ export default function Card({ children, ...rest }) {
     >
       {children}
     </Box>
-  );
+  )
 }
