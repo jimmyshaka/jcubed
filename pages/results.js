@@ -13,10 +13,10 @@ import useSWR from 'swr'
 import { useEffect, useState } from 'react'
 
 import { Layout } from '../src/components'
-import { fetcher } from '../src/utils/api'
+import { useGet } from '../src/utils/api'
 
 export default function Home() {
-  const { data: voteData } = useSWR(`api/votes`, fetcher)
+  const { data: voteData } = useGet(useSWR, `api/votes`)
   const [votes, setVotes] = useState([])
   const gridColumVariant = useBreakpointValue({
     base: 'repeat(1, 1fr)',
@@ -25,9 +25,10 @@ export default function Home() {
   const cardWidthVariant = useBreakpointValue({ base: '18ch', md: '24ch' })
 
   useEffect(() => {
-    if (voteData) {
-      setVotes(voteData)
-    }
+    if (!voteData)
+      return
+
+    setVotes(voteData)
   }, [voteData])
 
   const girlVotes = votes.filter((r) => r.gender === 'girl') || []
@@ -52,7 +53,7 @@ export default function Home() {
           color={type === 'girl' ? 'purple.600' : 'cyan.100'}
           textAlign="center"
         >
-          {type === 'boy' ? '♂️' : '♀️'}&nbsp;{vote.name}&nbsp;voted for {type}
+          {type === 'boy' ? '♂️' : '♀️'}&nbsp;{vote.name}&nbsp;voted {type}
         </Text>
       </GridItem>
     )
