@@ -7,9 +7,9 @@ export default async function postVote(req, res) {
 
     // validation & sanitization
     const params = {
-      name : capitalize(vote.name.trim()),
+      name: capitalize(vote.name.trim()),
       messageToParents: vote?.messageToParents?.trim(),
-      gender: vote.gender.trim().toLowerCase()
+      gender: vote.gender.trim().toLowerCase(),
     }
 
     const result = await repository.create(params)

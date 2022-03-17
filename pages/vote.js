@@ -14,6 +14,7 @@ import {
 import { useState } from 'react'
 import { isNil } from 'lodash'
 import { useRouter } from 'next/router'
+import { useCookies } from 'react-cookie'
 
 import { Layout } from '../src/components'
 import { post } from '../src/utils/api'
@@ -24,6 +25,7 @@ export default function Voter() {
   const [name, setName] = useState(null)
   const [gender, setGender] = useState(null)
   const [messageToParents, setMessageToParents] = useState(null)
+  const [cookies, setCookie, removeCookie] = useCookies(['user-voted'])
 
   const handleInputChange = (e) => setName(e.target.value)
   const handleMessageToParents = (e) => setMessageToParents(e.target.value)
@@ -35,6 +37,8 @@ export default function Voter() {
       messageToParents,
     })
 
+    setCookie('user-voted', true, ['/'])
+
     return router.push('/results')
   }
 
@@ -42,7 +46,8 @@ export default function Voter() {
     return router.push('/')
   }
 
-  const formNotValid = isNil(name) || isNil(gender)
+  const userAlreadyVoted = !!cookies['user-voted']
+  const formNotValid = isNil(name) || isNil(gender) || userAlreadyVoted
 
   return (
     <Layout title="Vote 🤔">
@@ -57,8 +62,13 @@ export default function Voter() {
         marginTop="2em"
         padding="1em"
       >
-        <FormHelperText fontSize="lg" color="purple.lightest">
-          Lil BB Walsh wants to know who you are and what you guessed.
+        <FormHelperText
+          fontSize="lg"
+          color={userAlreadyVoted ? 'red.200' : 'purple.lightest'}
+        >
+          {userAlreadyVoted
+            ? `🚫 You can only vote once! James caught you... Hes a programmer after all. Sit tight to see the results.`
+            : 'Lil BB Walsh wants to know who you are and what you guessed.'}
         </FormHelperText>
         <FormLabel htmlFor="name" marginTop="1em">
           Name
@@ -68,12 +78,13 @@ export default function Voter() {
           type="text"
           value={name || ''}
           focusBorderColor="purple.300"
+          isDisabled={userAlreadyVoted}
           onChange={handleInputChange}
         />
         <FormLabel htmlFor="gender" marginTop="1em">
           Gender
         </FormLabel>
-        <RadioGroup id="gender" onChange={setGender} value={gender}>
+        <RadioGroup id="gender" onChange={setGender} value={gender} isDisabled={userAlreadyVoted}>
           <Stack direction="row">
             <Radio size="lg" value="girl" colorScheme="pink">
               <Text color="pink.300" fontWeight="semibold">
@@ -94,6 +105,7 @@ export default function Voter() {
           focusBorderColor="purple.300"
           placeholder="Your child is destined to become the next President of the United States..."
           color="purple.100"
+          isDisabled={userAlreadyVoted}
           onChange={handleMessageToParents}
         />
         <Spacer />
