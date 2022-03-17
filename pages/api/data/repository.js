@@ -3,6 +3,8 @@ import * as uuid from 'uuid'
 
 import 'dotenv/config'
 
+import logger from '../../../src/utils/logger'
+
 const {
   REACT_APP_SPREADSHEET_ID,
   REACT_APP_GOOGLE_CLIENT_EMAIL,
@@ -31,9 +33,7 @@ export async function getAll() {
     const sheet = doc.sheetsByIndex[0]
     const rows = await sheet.getRows()
 
-    console.info(
-      `Retrieved ${rows.length} number of results from google sheets`
-    )
+    logger.info(`Retrieved ${rows.length} results from google sheets`)
 
     return rows.map((row) => ({
       id: row.id,
@@ -44,7 +44,7 @@ export async function getAll() {
       updatedAt: row.updatedAt,
     }))
   } catch (e) {
-    console.error('Failed to get data from Google Sheets: ', e)
+    logger.error('Failed to get data from Google Sheets: ', e)
     throw Error(e)
   }
 }
@@ -54,14 +54,16 @@ async function appendSpreadsheet(row) {
     await loadDocument()
 
     const sheet = doc.sheetsByIndex[0]
+    logger.info('Sheet row count before', sheet.rowCount)
+
     // ? THis is where the magic happens
     const res = await sheet.addRow(row)
-    console.info('Sheet title', sheet.title)
-    console.info('Sheet row count', sheet.rowCount)
+    logger.info('Appended new row to google sheet successfully')
+    logger.info('Sheet row count after', sheet.rowCount)
 
     return res
   } catch (e) {
-    console.error('Failed to upload to Google Sheets: ', e)
+    logger.error('Failed to upload to Google Sheets: ', e)
     throw Error(e)
   }
 }

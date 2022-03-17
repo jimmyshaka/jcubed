@@ -2,7 +2,6 @@ import { Box, Link, useBreakpointValue } from '@chakra-ui/react'
 
 export default function Card({ children, ...rest }) {
   const heightVariant = useBreakpointValue({ base: '8ch', lg: '14ch' })
-  console.log('heighVariant:', heightVariant)
 
   return (
     <Box
