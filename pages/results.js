@@ -68,32 +68,34 @@ export default function Home() {
           Moms Symptoms
         </Button>
       </HStack>
-      <Box display="flex" flexDirection="row">
-        <Box as="section" margin="0.25em" width="50%">
-          <Heading as="h2" color="cyan.400">
-            Boy Votes
-          </Heading>
-          <Text fontSize="lg">
-            Count: {boyVotes.length === 0 ? '-' : boyVotes.length}
-          </Text>
-          {boyVotes.length === 0 ? <Spinner /> : null}
-          <Grid templateColumns={gridColumVariant}>
-            {boyVotes.map((vote) => voteRenderer(vote, 'boy'))}
-          </Grid>
+      {!voteData ? (
+        <Spinner marginTop="2em" size="xl" />
+      ) : (
+        <Box display="flex" flexDirection="row">
+          <Box as="section" margin="0.25em" width="50%">
+            <Heading as="h2" color="cyan.400">
+              Boy Votes
+            </Heading>
+            <Text fontSize="lg">
+              Count: {!voteData ? '-' : boyVotes.length}
+            </Text>
+            <Grid templateColumns={gridColumVariant}>
+              {boyVotes.map((vote) => voteRenderer(vote, 'boy'))}
+            </Grid>
+          </Box>
+          <Box as="section" margin="0.25em" width="50%">
+            <Heading as="h2" color="purple.500">
+              Girl Votes
+            </Heading>
+            <Text fontSize="lg">
+              Count: {!voteData ? '-' : girlVotes.length}
+            </Text>
+            <Grid templateColumns={gridColumVariant}>
+              {girlVotes.map((vote) => voteRenderer(vote, 'girl'))}
+            </Grid>
+          </Box>
         </Box>
-        <Box as="section" margin="0.25em" width="50%">
-          <Heading as="h2" color="purple.500">
-            Girl Votes
-          </Heading>
-          <Text fontSize="lg">
-            Count: {girlVotes.length === 0 ? '-' : girlVotes.length}
-          </Text>
-          {girlVotes.length === 0 ? <Spinner /> : null}
-          <Grid templateColumns={gridColumVariant}>
-            {girlVotes.map((vote) => voteRenderer(vote, 'girl'))}
-          </Grid>
-        </Box>
-      </Box>
+      )}
     </Layout>
   )
 }

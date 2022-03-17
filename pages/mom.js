@@ -85,7 +85,7 @@ export default function Mom() {
         <TableCaption>A breakdown of Jess&apos;pregnancy symptoms</TableCaption>
         <Thead>
           <Tr>
-            <Th>Symptom</Th>
+            <Th>Symptom</Th>BRB
             <Th>♀️ Girl</Th>
             <Th>♂️ Boy</Th>
           </Tr>
