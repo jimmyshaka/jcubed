@@ -4,7 +4,7 @@ import Head from 'next/head'
 export default function Layout({ children, title }) {
   return (
     <>
-      <Center flexDirection="column" margin="2em">
+      <Center flexDirection="column" margin="1.5em">
         <Head>
           <title>{title}</title>
         </Head>

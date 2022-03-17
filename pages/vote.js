@@ -9,6 +9,7 @@ import {
   RadioGroup,
   Radio,
   Textarea,
+  Text,
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import { isNil } from 'lodash'
@@ -42,19 +43,19 @@ export default function Voter() {
   const formNotValid = isNil(name) || isNil(gender)
 
   return (
-    <Layout title="Vote">
+    <Layout title="Vote 🤔">
       <FormControl
         margin="1em"
         display="flex"
         flexDirection="column"
-        backgroundColor="purple.400"
-        minHeight="40vh"
+        backgroundColor="purple.500"
+        minHeight="50vh"
         borderRadius="md"
         marginTop="2em"
         padding="1em"
       >
         <FormHelperText fontSize="lg" color="purple.lightest">
-          Lil BB wants to know who you are and what you guessed.
+          Lil Walsh BB wants to know who you are and what you guessed.
         </FormHelperText>
         <FormLabel htmlFor="name" marginTop="1em">
           Name
@@ -63,7 +64,7 @@ export default function Voter() {
           id="name"
           type="text"
           value={name || ''}
-          focusBorderColor="purple.200"
+          focusBorderColor="purple.300"
           onChange={handleInputChange}
         />
         <FormLabel htmlFor="gender" marginTop="1em">
@@ -72,10 +73,11 @@ export default function Voter() {
         <RadioGroup id="gender" onChange={setGender} value={gender}>
           <Stack direction="row">
             <Radio size="lg" value="girl" colorScheme="pink">
-              ♀️ Girl
+            <Text color="pink.300" fontWeight="semibold">♀️ Girl</Text>
+              
             </Radio>
             <Radio size="lg" value="boy" colorScheme="blue">
-              ♂️ Boy
+              <Text color="cyan.300" fontWeight="semibold">♂️ Boy</Text>
             </Radio>
           </Stack>
         </RadioGroup>
@@ -83,8 +85,9 @@ export default function Voter() {
           Message to Mom & Dad
         </FormLabel>
         <Textarea
-          focusBorderColor="purple.200"
+          focusBorderColor="purple.300"
           placeholder="Your child is destined to become the next President of the United States..."
+          color="purple.100"
           onChange={handleMessageToParents}
         />
         <Spacer />

@@ -12,7 +12,7 @@ const theme = extendTheme({
         backgroundColor: '#322659',
       },
       a: {
-        textDecoration: 'none',
+        textDecoration: 'none !important',
       },
     },
   },

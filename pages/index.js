@@ -6,10 +6,10 @@ import { Card, Layout } from '../src/components'
 
 export default function Home() {
   return (
-    <Layout title="Gender Reveal Party">
+    <Layout title="Walsh ♀️♂️ Party">
       <Stack marginTop="2em" spacing={8}>
-        <Card href="/vote">Vote</Card>
-        <Card href="/results">See results</Card>
+        <Card href="/vote">Guess Gender⁉️</Card>
+        <Card href="/results">See Results 🥳</Card>
       </Stack>
     </Layout>
   )

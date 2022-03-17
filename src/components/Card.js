@@ -6,12 +6,16 @@ export default function Card({ children, ...rest }) {
       display="flex"
       justifyContent="center"
       alignItems="center"
-      backgroundColor="blue.400"
+      backgroundColor="purple.500"
       borderRadius="8px"
-      color="blue.50"
-      height="6em"
+      borderColor="cyan.300"
+      borderWidth={4}
+      color="cyan.300"
+      height="7em"
       width="12em"
+      padding="0.25em"
       fontSize="2xl"
+      _hover={{ backgroundColor: 'purple.400' }}
       as={Link}
       {...rest}
     >
