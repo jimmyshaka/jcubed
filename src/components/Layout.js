@@ -8,7 +8,7 @@ export default function Layout({ children, title }) {
         <Head>
           <title>{title}</title>
         </Head>
-        <Heading as="h1" size="3xl">
+        <Heading as="h1" fontSize="4xl">
           {title}
         </Heading>
         <Center as="main" marginTop="1em" flexDirection="column">

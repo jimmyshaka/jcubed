@@ -9,8 +9,7 @@ export default function Home() {
   const { data: voteData } = useSWR(`api/votes`, fetcher)
   const [votes, setVotes] = useState([])
   const gridColumVariant = useBreakpointValue({ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' });
-
-  console.log('gridColumVariant:', gridColumVariant)
+  const cardWidthVariant = useBreakpointValue({ base: '18ch', md: '24ch' });
 
   useEffect(() => {
     if (voteData) {
@@ -28,24 +27,15 @@ export default function Home() {
       padding: '0.25em',
       margin: '0.5em',
       color: type === 'girl' ? 'purple.800' : 'cyan.800',
-      minHeight: '10ch',
-      minWidth: '20ch'
-    }
-    const messageStyles = {
-      backgroundColor: type === 'girl' ? 'purple.400' : 'cyan.300',
-      borderRadius: '4px',
-      maxWidth: 'fit-content',
-      minWidth: '100%',
-      minHeight: '48px',
-      padding: '4px'
+      minHeight: '8ch',
+      width: cardWidthVariant
     }
 
     return (
       <GridItem key={vote.id} {...listItemStyles}>
-        <Text fontSize="xl" color={type === 'girl' ? 'purple.600' : 'cyan.100'}>
-          {type === 'boy' ? '♂️' : '♀️'}&nbsp;{vote.name}
+        <Text fontSize="xl" color={type === 'girl' ? 'purple.600' : 'cyan.100'} textAlign="center">
+          {type === 'boy' ? '♂️' : '♀️'}&nbsp;{vote.name}&nbsp;voted for {type}
         </Text>
-        <Box {...messageStyles}>{vote.messageToParents}</Box>
       </GridItem>
     )
   }
@@ -53,7 +43,7 @@ export default function Home() {
   return (
     <Layout title="👶 🍼 Votes" id="results-list">
       <Box display="flex" flexDirection="row">
-        <Box as="section" margin="0.5em">
+        <Box as="section" margin="0.25em" width="50%">
           <Heading as="h2" color="cyan.400">
             Boy Votes
           </Heading>
@@ -62,7 +52,7 @@ export default function Home() {
             {boyVotes.map((vote) => voteRenderer(vote, 'boy'))}
           </Grid>
         </Box>
-        <Box as="section" margin="0.5em">
+        <Box as="section" margin="0.25em" width="50%">
           <Heading as="h2" color="purple.500">Girl Votes</Heading>
           <Text fontSize="lg">Count: {boyVotes.length}</Text>
           <Grid templateColumns={gridColumVariant}>
