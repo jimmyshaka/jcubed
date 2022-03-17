@@ -24,7 +24,7 @@ export default function Voter({ ...props }) {
   const handleMessageToParents = (e) => setMessageToParents(e.target.value)
 
   const handleSubmit = async () => {
-    const response = await fetch('/api/vote', {
+    const response = await fetch('/api/votes', {
       method: 'POST',
       body: JSON.stringify({ name, gender, messageToParents }),
       headers: {

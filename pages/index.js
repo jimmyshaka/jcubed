@@ -9,7 +9,7 @@ export default function Home() {
     <Layout title="Gender Reveal Party">
       <Stack marginTop="2em" spacing={8}>
         <Card href="/vote">Vote</Card>
-        <Card>Check Votes</Card>
+        <Card href="/results">See results</Card>
       </Stack>
     </Layout>
   )
