@@ -7,6 +7,8 @@ import {
   Td,
   Tbody,
   Tfoot,
+  Button,
+  HStack,
 } from '@chakra-ui/react'
 
 import { Card, Layout } from '../src/components'
@@ -67,6 +69,14 @@ export default function Mom() {
 
   return (
     <Layout title="Symptom Folklore">
+      <HStack marginBottom="0.5em">
+        <Button as="a" href="/vote">
+          Ready to vote
+        </Button>
+        <Button as="a" href="results">
+          See how others voted
+        </Button>
+      </HStack>
       <Table variant="simple">
         <TableCaption>A breakdown of Jess&apos;pregnancy symptoms</TableCaption>
         <Thead>
@@ -81,8 +91,14 @@ export default function Mom() {
             return (
               <Tr key={symptom.name}>
                 <Td>{symptom.name}</Td>
-                <Td>{!!symptom.isGirl && '⭐'}{symptom.girlData}</Td>
-                <Td>{!!symptom.isBoy && '⭐'}{symptom.boyData}</Td>
+                <Td>
+                  {!!symptom.isGirl && '⭐'}
+                  {symptom.girlData}
+                </Td>
+                <Td>
+                  {!!symptom.isBoy && '⭐'}
+                  {symptom.boyData}
+                </Td>
               </Tr>
             )
           })}

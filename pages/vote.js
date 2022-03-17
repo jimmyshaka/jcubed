@@ -100,13 +100,13 @@ export default function Voter() {
         <Button
           marginTop="1em"
           isDisabled={formNotValid}
-          colorScheme="purple"
+          colorScheme="cyan"
           onClick={handleSubmit}
         >
-          Vote 🤙
+          Cast my vote 🤙
         </Button>
-        <Button marginTop="1em" colorScheme="cyan" onClick={handleGoBack}>
-          Not ready yet, lets go back ⬅️
+        <Button marginTop="1em" colorScheme="purple" onClick={handleGoBack}>
+          Lets go back ⬅️
         </Button>
       </FormControl>
     </Layout>
