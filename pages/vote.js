@@ -6,7 +6,6 @@ import {
   Spacer,
   FormHelperText,
   Stack,
-  Text,
   RadioGroup,
   Radio,
   Textarea,
@@ -29,12 +28,11 @@ export default function Voter({ ...props }) {
       method: 'POST',
       body: JSON.stringify({ name, gender, messageToParents }),
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     })
 
-    const data = await response.json()
-    console.log('data:', data)
+    await response.json()
   }
 
   const formNotValid = isNil(name) || isNil(gender)
@@ -46,7 +44,7 @@ export default function Voter({ ...props }) {
         display="flex"
         flexDirection="column"
         backgroundColor="purple.400"
-        height="40vh"
+        minHeight="40vh"
         borderRadius="md"
         marginTop="2em"
         padding="1em"
@@ -87,6 +85,7 @@ export default function Voter({ ...props }) {
         />
         <Spacer />
         <Button
+          marginTop="1em"
           isDisabled={formNotValid}
           colorScheme="purple"
           onClick={handleSubmit}

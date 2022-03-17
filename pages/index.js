@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <Layout title="Gender Reveal Party">
       <Stack marginTop="2em" spacing={8}>
-        <Card href="/voter">Vote</Card>
+        <Card href="/vote">Vote</Card>
         <Card>Check Votes</Card>
       </Stack>
     </Layout>
