@@ -28,12 +28,15 @@ export default function Voter() {
   const handleMessageToParents = (e) => setMessageToParents(e.target.value)
 
   const handleSubmit = async () => {
-    const response = await post('/api/votes', { name, gender, messageToParents })
+    const response = await post('/api/votes', {
+      name,
+      gender,
+      messageToParents,
+    })
 
     console.log('response:', response)
 
-    return router .push('/results')
-
+    return router.push('/results')
   }
 
   const formNotValid = isNil(name) || isNil(gender)

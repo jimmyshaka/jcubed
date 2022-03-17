@@ -1,6 +1,5 @@
 export const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
-
 export async function post(url, body) {
   return await fetch(url, {
     method: 'POST',
