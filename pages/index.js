@@ -7,8 +7,8 @@ export default function Home() {
     <Layout title="Walsh ♀️♂️ Party">
       <Text fontSize="md" textAlign="center">
         There are old <b>folklore tales</b> that help predict traits about your
-        baby. Check Mom&apos;s symptoms using the cards below then guess the sex of the Walsh baby. Or check in and see how friends & family
-        voted below.
+        baby. Check Mom&apos;s symptoms using the cards below then guess the sex
+        of the Walsh baby. Or check in and see how friends & family voted below.
       </Text>
       <Stack marginTop="2em" spacing={8}>
         <Card href="/mom">Mom&apos;s Symptoms</Card>

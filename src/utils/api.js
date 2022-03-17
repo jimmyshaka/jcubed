@@ -13,9 +13,5 @@ export async function post(url, body) {
 const { REFRESH_INTERVAL } = process.env
 
 export const useGet = (useSWRHook, url, pollInterval = REFRESH_INTERVAL) => {
-  return useSWRHook(
-    url,
-    fetcher,
-    { refreshInterval: pollInterval }
-  )
+  return useSWRHook(url, fetcher, { refreshInterval: pollInterval })
 }
