@@ -9,12 +9,15 @@ import {
   Tfoot,
   Button,
   HStack,
+  useBreakpointValue,
 } from '@chakra-ui/react'
 import { capitalize } from 'lodash'
 
-import { Card, Layout } from '../src/components'
+import { Layout } from '../src/components'
 
 export default function Mom() {
+  const tableSizeVariant = useBreakpointValue({ base: 'sm', md: 'lg' })
+
   const symptoms = [
     {
       name: 'Morning Sickness',
@@ -35,9 +38,9 @@ export default function Mom() {
       isBoy: true,
     },
     {
-      name: 'Sleeping On',
-      girlData: 'Right Side',
-      boyData: 'Left Side',
+      name: 'Side Slept On',
+      girlData: 'Right',
+      boyData: 'Left',
       boy: false,
       isGirl: true,
       isBoy: true,
@@ -81,11 +84,11 @@ export default function Mom() {
           Vote results
         </Button>
       </HStack>
-      <Table variant="simple">
+      <Table variant="simple" size={tableSizeVariant}>
         <TableCaption>A breakdown of Jess&apos;pregnancy symptoms</TableCaption>
         <Thead>
           <Tr>
-            <Th>Symptom</Th>BRB
+            <Th>Symptom</Th>
             <Th>♀️ Girl</Th>
             <Th>♂️ Boy</Th>
           </Tr>

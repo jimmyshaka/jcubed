@@ -84,7 +84,12 @@ export default function Voter() {
         <FormLabel htmlFor="gender" marginTop="1em">
           Gender
         </FormLabel>
-        <RadioGroup id="gender" onChange={setGender} value={gender} isDisabled={userAlreadyVoted}>
+        <RadioGroup
+          id="gender"
+          onChange={setGender}
+          value={gender}
+          isDisabled={userAlreadyVoted}
+        >
           <Stack direction="row">
             <Radio size="lg" value="girl" colorScheme="pink">
               <Text color="pink.300" fontWeight="semibold">
