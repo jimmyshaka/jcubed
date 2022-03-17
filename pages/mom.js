@@ -66,7 +66,7 @@ export default function Mom() {
   ]
 
   return (
-    <Layout title="Mom's Symptom Folklore">
+    <Layout title="Symptom Folklore">
       <Table variant="simple">
         <TableCaption>A breakdown of Jess&apos;pregnancy symptoms</TableCaption>
         <Thead>
@@ -82,7 +82,7 @@ export default function Mom() {
               <Tr key={symptom.name}>
                 <Td>{symptom.name}</Td>
                 <Td>{!!symptom.isGirl && '⭐'}{symptom.girlData}</Td>
-                <Td>{!!symptom.isGirl && '⭐'}{symptom.boyData}</Td>
+                <Td>{!!symptom.isBoy && '⭐'}{symptom.boyData}</Td>
               </Tr>
             )
           })}
