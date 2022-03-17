@@ -1,11 +1,19 @@
 import { List, ListItem } from '@chakra-ui/react'
 import useSWR from 'swr'
+import { useEffect, useState } from 'react'
 
 import { Layout } from '../src/components'
 import { fetcher } from '../src/utils/api'
 
 export default function Home() {
-  const { data: votes } = useSWR(`api/votes`, fetcher)
+  const { data: voteData } = useSWR(`api/votes`, fetcher)
+  const [votes, setVotes] = useState([])
+
+  useEffect(() => {
+    if (voteData) {
+      setVotes(voteData)
+    }
+  }, [voteData])
 
   const girlVotes = votes.filter((r) => r.gender === 'girl') || []
   const boyVotes = votes.filter((r) => r.gender === 'boy') || []

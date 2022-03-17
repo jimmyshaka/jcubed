@@ -12,10 +12,14 @@ import {
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import { isNil } from 'lodash'
+import { useRouter } from 'next/router'
 
 import { Layout } from '../src/components'
+import { post } from '../src/utils/api'
 
-export default function Voter({ ...props }) {
+export default function Voter() {
+  const router = useRouter()
+
   const [name, setName] = useState(null)
   const [gender, setGender] = useState(null)
   const [messageToParents, setMessageToParents] = useState(null)
@@ -24,15 +28,12 @@ export default function Voter({ ...props }) {
   const handleMessageToParents = (e) => setMessageToParents(e.target.value)
 
   const handleSubmit = async () => {
-    const response = await fetch('/api/votes', {
-      method: 'POST',
-      body: JSON.stringify({ name, gender, messageToParents }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    const response = await post('/api/votes', { name, gender, messageToParents })
 
-    await response.json()
+    console.log('response:', response)
+
+    return router .push('/results')
+
   }
 
   const formNotValid = isNil(name) || isNil(gender)
