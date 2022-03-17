@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { Center, Heading, Box, Stack } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 
 import { Card, Layout } from '../src/components'
 
