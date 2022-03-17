@@ -76,11 +76,14 @@ export default function Voter() {
         <RadioGroup id="gender" onChange={setGender} value={gender}>
           <Stack direction="row">
             <Radio size="lg" value="girl" colorScheme="pink">
-            <Text color="pink.300" fontWeight="semibold">♀️ Girl</Text>
-              
+              <Text color="pink.300" fontWeight="semibold">
+                ♀️ Girl
+              </Text>
             </Radio>
             <Radio size="lg" value="boy" colorScheme="blue">
-              <Text color="cyan.300" fontWeight="semibold">♂️ Boy</Text>
+              <Text color="cyan.300" fontWeight="semibold">
+                ♂️ Boy
+              </Text>
             </Radio>
           </Stack>
         </RadioGroup>
@@ -102,11 +105,7 @@ export default function Voter() {
         >
           Vote 🤙
         </Button>
-        <Button
-          marginTop="1em"
-          colorScheme="cyan"
-          onClick={handleGoBack}
-        >
+        <Button marginTop="1em" colorScheme="cyan" onClick={handleGoBack}>
           Not ready yet, lets go back ⬅️
         </Button>
       </FormControl>
