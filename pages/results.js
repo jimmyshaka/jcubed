@@ -5,6 +5,7 @@ import {
   Heading,
   Text,
   useBreakpointValue,
+  Spinner
 } from '@chakra-ui/react'
 import useSWR from 'swr'
 import { useEffect, useState } from 'react'
@@ -63,6 +64,7 @@ export default function Home() {
             Boy Votes
           </Heading>
           <Text fontSize="lg">Count: {boyVotes.length}</Text>
+          {boyVotes.length === 0 ? (<Spinner />) : null}
           <Grid templateColumns={gridColumVariant}>
             {boyVotes.map((vote) => voteRenderer(vote, 'boy'))}
           </Grid>
@@ -71,7 +73,8 @@ export default function Home() {
           <Heading as="h2" color="purple.500">
             Girl Votes
           </Heading>
-          <Text fontSize="lg">Count: {boyVotes.length}</Text>
+          <Text fontSize="lg">Count: {girlVotes.length}</Text>
+          {girlVotes.length === 0 ? (<Spinner />) : null}
           <Grid templateColumns={gridColumVariant}>
             {girlVotes.map((vote) => voteRenderer(vote, 'girl'))}
           </Grid>
