@@ -10,6 +10,7 @@ import {
   Button,
   HStack,
 } from '@chakra-ui/react'
+import { capitalize } from 'lodash'
 
 import { Card, Layout } from '../src/components'
 
@@ -70,11 +71,14 @@ export default function Mom() {
   return (
     <Layout title="Symptom Folklore">
       <HStack marginBottom="0.5em">
+        <Button as="a" href="/">
+          🏠
+        </Button>
         <Button as="a" href="/vote">
           Ready to vote
         </Button>
         <Button as="a" href="results">
-          See how others voted
+          Vote results
         </Button>
       </HStack>
       <Table variant="simple">
@@ -90,14 +94,13 @@ export default function Mom() {
           {symptoms.map((symptom) => {
             return (
               <Tr key={symptom.name}>
-                <Td>{symptom.name}</Td>
+                <Td>{capitalize(symptom.name)}</Td>
                 <Td>
                   {!!symptom.isGirl && '⭐'}
-                  {symptom.girlData}
+                  {capitalize(symptom.girlData)}
                 </Td>
                 <Td>
-                  {!!symptom.isBoy && '⭐'}
-                  {symptom.boyData}
+                  {!!symptom.isBoy && '⭐'} {capitalize(symptom.boyData)}
                 </Td>
               </Tr>
             )

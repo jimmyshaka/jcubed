@@ -5,7 +5,9 @@ import {
   Heading,
   Text,
   useBreakpointValue,
-  Spinner
+  Spinner,
+  HStack,
+  Button,
 } from '@chakra-ui/react'
 import useSWR from 'swr'
 import { useEffect, useState } from 'react'
@@ -58,13 +60,23 @@ export default function Home() {
 
   return (
     <Layout title="👶 🍼 Votes" id="results-list">
+      <HStack marginBottom="0.5.5em">
+        <Button as="a" href="/">
+          🏠
+        </Button>
+        <Button as="a" href="/mom">
+          Moms Symptoms
+        </Button>
+      </HStack>
       <Box display="flex" flexDirection="row">
         <Box as="section" margin="0.25em" width="50%">
           <Heading as="h2" color="cyan.400">
             Boy Votes
           </Heading>
-          <Text fontSize="lg">Count: {boyVotes.length}</Text>
-          {boyVotes.length === 0 ? (<Spinner />) : null}
+          <Text fontSize="lg">
+            Count: {boyVotes.length === 0 ? '-' : boyVotes.length}
+          </Text>
+          {boyVotes.length === 0 ? <Spinner /> : null}
           <Grid templateColumns={gridColumVariant}>
             {boyVotes.map((vote) => voteRenderer(vote, 'boy'))}
           </Grid>
@@ -73,8 +85,10 @@ export default function Home() {
           <Heading as="h2" color="purple.500">
             Girl Votes
           </Heading>
-          <Text fontSize="lg">Count: {girlVotes.length}</Text>
-          {girlVotes.length === 0 ? (<Spinner />) : null}
+          <Text fontSize="lg">
+            Count: {girlVotes.length === 0 ? '-' : girlVotes.length}
+          </Text>
+          {girlVotes.length === 0 ? <Spinner /> : null}
           <Grid templateColumns={gridColumVariant}>
             {girlVotes.map((vote) => voteRenderer(vote, 'girl'))}
           </Grid>
