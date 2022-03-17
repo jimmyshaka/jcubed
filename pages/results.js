@@ -24,6 +24,7 @@ export default function Home() {
     const listItemStyles = {
       backgroundColor: type == 'girl' ? 'purple.200' : 'cyan.600',
       borderRadius: '8px',
+      boxShadow: 'xl',
       padding: '0.25em',
       margin: '0.5em',
       color: type === 'girl' ? 'purple.800' : 'cyan.800',

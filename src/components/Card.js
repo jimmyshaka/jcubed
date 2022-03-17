@@ -9,8 +9,9 @@ export default function Card({ children, ...rest }) {
       backgroundColor="purple.500"
       borderRadius="8px"
       borderColor="cyan.300"
-      borderWidth={4}
-      color="cyan.300"
+      borderWidth={2}
+      boxShadow="2xl"
+      color="cyan.50"
       height="7em"
       width="12em"
       padding="0.25em"

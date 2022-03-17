@@ -6,14 +6,14 @@ export default async function postVote(req, res) {
 
     // TODO: validate
     const result = await repository.create(vote)
-    console.log('result:', result)
+    console.info('posted result:', result)
 
     return res.status(201).json(vote)
   }
 
   if (req.method === 'GET') {
     const votes = await repository.getAll()
-    console.log('vote results:', votes)
+    console.info('vote results:', votes)
 
     return res.send(votes)
   } else {

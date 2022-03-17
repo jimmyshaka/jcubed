@@ -35,9 +35,11 @@ export default function Voter() {
       messageToParents,
     })
 
-    console.log('response:', response)
-
     return router.push('/results')
+  }
+
+  const handleGoBack = () => {
+    return router.push('/')
   }
 
   const formNotValid = isNil(name) || isNil(gender)
@@ -51,11 +53,12 @@ export default function Voter() {
         backgroundColor="purple.500"
         minHeight="50vh"
         borderRadius="md"
+        boxShadow="2xl"
         marginTop="2em"
         padding="1em"
       >
         <FormHelperText fontSize="lg" color="purple.lightest">
-          Lil Walsh BB wants to know who you are and what you guessed.
+          Lil BB Walsh wants to know who you are and what you guessed.
         </FormHelperText>
         <FormLabel htmlFor="name" marginTop="1em">
           Name
@@ -82,7 +85,7 @@ export default function Voter() {
           </Stack>
         </RadioGroup>
         <FormLabel htmlFor="gender" marginTop="1em">
-          Message to Mom & Dad
+          Optional message to Mom & Dad
         </FormLabel>
         <Textarea
           focusBorderColor="purple.300"
@@ -98,6 +101,13 @@ export default function Voter() {
           onClick={handleSubmit}
         >
           Vote 🤙
+        </Button>
+        <Button
+          marginTop="1em"
+          colorScheme="cyan"
+          onClick={handleGoBack}
+        >
+          Not ready yet, lets go back ⬅️
         </Button>
       </FormControl>
     </Layout>
