@@ -24,11 +24,17 @@ export default function Voter({ ...props }) {
   const handleInputChange = (e) => setName(e.target.value)
   const handleMessageToParents = (e) => setMessageToParents(e.target.value)
 
-  const handleSubmit = () => {
-    // ! TODO: temporary value till data is hooked up
-    alert(
-      `${name} guessed that you are having a boy and says ${messageToParents} `
-    )
+  const handleSubmit = async () => {
+    const response = await fetch('/api/vote', {
+      method: 'POST',
+      body: JSON.stringify({ name, gender, messageToParents }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    const data = await response.json()
+    console.log('data:', data)
   }
 
   const formNotValid = isNil(name) || isNil(gender)
@@ -54,7 +60,7 @@ export default function Voter({ ...props }) {
         <Input
           id="name"
           type="text"
-          value={name}
+          value={name || ''}
           focusBorderColor="purple.200"
           onChange={handleInputChange}
         />
