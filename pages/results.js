@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react'
 
 import { Layout } from '../src/components'
 import { useGet } from '../src/utils/api'
+import { capitalize } from 'lodash'
 
 export default function Home() {
   const { data: voteData } = useGet(useSWR, `api/votes`)
@@ -48,13 +49,18 @@ export default function Home() {
       textAlign: 'center',
     }
 
+    const formattedName = vote.name.split(' ').map(name => {
+      return capitalize(name)
+    }).join(' ').toString()
+
     return (
       <GridItem key={vote.id}>
         <Tag {...tagStyles}>
           <Text fontWeight="bold" fontSize="xl">
             {type === 'boy' ? '♂️' : '♀️'}
           </Text>
-          &nbsp;{vote.name}
+          &nbsp;
+          <Text>{formattedName}</Text>
         </Tag>
       </GridItem>
     )
