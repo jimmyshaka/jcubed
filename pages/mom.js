@@ -1,4 +1,5 @@
 import {
+  Box,
   Table,
   TableCaption,
   Thead,
@@ -99,11 +100,12 @@ export default function Mom() {
               <Tr key={symptom.name}>
                 <Td>{capitalize(symptom.name)}</Td>
                 <Td>
-                  {!!symptom.isGirl && '⭐'}
-                  {capitalize(symptom.girlData)}
+                  <Box as="span" marginRight="2px">{!!symptom.isGirl && '⭐'}</Box>
+                  <Box as="span">{capitalize(symptom.girlData)}</Box>
                 </Td>
                 <Td>
-                  {!!symptom.isBoy && '⭐'} {capitalize(symptom.boyData)}
+                <Box as="span" marginRight="2px">{!!symptom.isBoy && '⭐'}</Box>
+                <Box as="span">{capitalize(symptom.boyData)}</Box>
                 </Td>
               </Tr>
             )
