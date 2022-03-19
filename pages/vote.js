@@ -25,7 +25,7 @@ export default function Voter() {
   const [name, setName] = useState(null)
   const [gender, setGender] = useState(null)
   const [messageToParents, setMessageToParents] = useState(null)
-  const [cookies, setCookie, removeCookie] = useCookies(['user-voted'])
+  const [cookies, setCookie] = useCookies(['user-voted'])
 
   const handleInputChange = (e) => setName(e.target.value)
   const handleMessageToParents = (e) => setMessageToParents(e.target.value)

@@ -100,12 +100,16 @@ export default function Mom() {
               <Tr key={symptom.name}>
                 <Td>{capitalize(symptom.name)}</Td>
                 <Td>
-                  <Box as="span" marginRight="2px">{!!symptom.isGirl && '⭐'}</Box>
+                  <Box as="span" marginRight="2px">
+                    {!!symptom.isGirl && '⭐'}
+                  </Box>
                   <Box as="span">{capitalize(symptom.girlData)}</Box>
                 </Td>
                 <Td>
-                <Box as="span" marginRight="2px">{!!symptom.isBoy && '⭐'}</Box>
-                <Box as="span">{capitalize(symptom.boyData)}</Box>
+                  <Box as="span" marginRight="2px">
+                    {!!symptom.isBoy && '⭐'}
+                  </Box>
+                  <Box as="span">{capitalize(symptom.boyData)}</Box>
                 </Td>
               </Tr>
             )
