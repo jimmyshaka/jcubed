@@ -67,7 +67,7 @@ export default function Voter() {
           color={userAlreadyVoted ? 'red.200' : 'purple.lightest'}
         >
           {userAlreadyVoted
-            ? `🚫 You can only vote once! James caught you... Hes a programmer after all. Sit tight to see the results.`
+            ? `🚫 You can only vote once! Sit tight to see the results.`
             : 'Lil BB Walsh wants to know who you are and what you guessed.'}
         </FormHelperText>
         <FormLabel htmlFor="name" marginTop="1em">
