@@ -1,6 +1,6 @@
 # J Cubed
 
-A simple gender reveal website built using [Next.js](https://nextjs.org/), and the G-Suite Sheets API.
+Rowan's gender reveal website built using [Next.js](https://nextjs.org/), and the G-Suite Sheets API.
 
 ## Getting Started
 
